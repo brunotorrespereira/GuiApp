@@ -1,36 +1,33 @@
 
-// import React from 'react';
-// import { View,Text, StyleSheet } from 'react-native';
-
-// export default function Modal() {
-//  return (
-//    <View>
-//    <Text>Detalhes do Filme</Text>
-//    </View>
-//   );
-// }
-
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-interface DetalhesProps {
-  visible: boolean;
+interface Filme {
+  id: number;
+  nome: string;
+  foto: string
+  sinopse: string
 }
 
-const Detalhes: React.FC<DetalhesProps> = (props) => {
+interface DetalhesProps {
+  data: Filme
+  voltar: () => void 
+}
+
+const Detalhes: React.FC<DetalhesProps> = ({data, voltar}) => {
   return (
     <View style={styles.container}>
 
       <View style={styles.modalContainer}>
 
-        <TouchableOpacity style={styles.btnVoltar} onPress={ props.voltar}>
+        <TouchableOpacity style={styles.btnVoltar} onPress={voltar}>
           <Text style={{color:'#fff',fontSize:16}}>Voltar</Text>
         </TouchableOpacity>
 
 
-        <Text style={styles.titulo}>{props.filmes.nome}</Text>
+        <Text style={styles.titulo}>{data.nome}</Text>
         <Text style={styles.sinopse}>Sinopse:</Text>
-        <Text style={styles.descricao}>{props.filmes.sinopse}</Text>
+        <Text style={styles.descricao}>{data.sinopse}</Text>
 
       </View>
 

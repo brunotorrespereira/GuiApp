@@ -1,24 +1,19 @@
 
-// import React from 'react';
-// import { View,Text } from 'react-native';
-
-// export default function Filmes({data}) {
-//  return (
-//    <View>
-//       <Text>{data.nome}</Text>
-//    </View>
-//   );
-// }
-
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Modal} from 'react-native';
 import Detalhes from '../Detalhes';
 
+interface Filme {
+    id: number;
+    nome: string;
+    foto: string;
+    sinopse: string;
+    
+}
 
 interface FilmeProps {
-  data: {
-    nome: string;
-  };
+    data: Filme;
+  
 }
 
 const Filmes: React.FC<FilmeProps> = ({ data }) => {
@@ -40,7 +35,7 @@ const Filmes: React.FC<FilmeProps> = ({ data }) => {
              </TouchableOpacity>
            </View>
            <Modal transparent={true} animationType='slide' visible={visibleModal}>
-             <Detalhes filmes={data} voltar={() => setVisibleModal(false)}/>
+             <Detalhes data={data} voltar={() => setVisibleModal(false)}/>
 
            </Modal>
         </View>
